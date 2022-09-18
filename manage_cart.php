@@ -34,6 +34,7 @@ session_start();
                         </script>";
             }
         }
+
         if(isset($_POST['Remove']))
         {
             foreach($_SESSION['cart'] as $key => $value)
@@ -46,6 +47,25 @@ session_start();
                     "
                         <script>
                             alert('Item Removed');
+                            window.location.href = 'mycart.php';
+                        </script>
+                    ";
+                }
+            }
+        }
+
+        if(isset($_POST['Mod_Quantity']))
+        {
+            foreach($_SESSION['cart'] as $key => $value)
+            {
+                if($value['Item_Name'] == $_POST['Item_Remove'])
+                {
+                    $_SESSION['cart'][$key]['Quantity'] = $_POST['Mod_Quantity'];
+    
+                    echo
+                    "
+                        <script>
+                            alert('Quantity increse');
                             window.location.href = 'mycart.php';
                         </script>
                     ";
